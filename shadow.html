@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f4efe5"><title>借影 · 屋檐之间</title><style>
+:root{color-scheme:light;--ink:#273c39;--paper:#f4efe5;--muted:#68746b}*{box-sizing:border-box}html{background:var(--paper)}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 50% 40%,#fffaf1 0,transparent 54%),var(--paper);color:var(--ink);font:15px/1.6 'Microsoft YaHei',sans-serif}button,a{-webkit-tap-highlight-color:transparent}a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer;border:1px solid #aab3a5;background:transparent;color:inherit;padding:8px 17px;border-radius:4px;touch-action:manipulation}button:hover{background:#e0e6da}button:disabled{opacity:.45;cursor:default}button:focus-visible,a:focus-visible,.stage:focus-visible{outline:3px solid #ac4f3b;outline-offset:4px}[hidden]{display:none!important}.nav{max-width:1240px;margin:auto;padding:23px 32px;border-bottom:1px solid #d2d7c9;display:flex;justify-content:space-between;font-size:12px;letter-spacing:.1em}main{max-width:1180px;margin:auto;padding:0 32px}.heading{display:flex;justify-content:space-between;align-items:center;margin:30px 0 24px}.eyebrow{font-size:11px;letter-spacing:.22em;color:var(--muted);margin:0 0 8px}h1{font:54px/1.15 KaiTi,STKaiti,SimSun,serif;margin:0;letter-spacing:.08em}h1 span{font:14px 'Microsoft YaHei',sans-serif;letter-spacing:.22em;border-left:1px solid #aeb7a8;margin-left:25px;padding-left:25px}.lead{font-size:13px;color:var(--muted);margin:0}.game-frame{border:1px solid #9daa98;border-radius:8px;overflow:hidden;background:#e8ebdf;box-shadow:0 12px 40px #293e3710}.hud{display:flex;justify-content:space-between;gap:12px;padding:11px 20px;font-size:12px;background:#e7ebdf;border-bottom:1px solid #bec8b7}.hud span:first-child{flex:1}.stage{position:relative;background:#e7e9dd;aspect-ratio:2/1;overflow:hidden;outline-offset:-3px!important}canvas{display:block;width:100%;height:100%;touch-action:none}.overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:#e8eddfb8;backdrop-filter:blur(5px)}.overlay-inner{text-align:center;max-width:460px;padding:22px}.overlay h2{font:38px KaiTi,STKaiti,SimSun,serif;margin:14px 0}.overlay p{font-size:14px;color:#53655a;margin:0 0 20px}.primary{background:var(--ink);border-color:var(--ink);color:#fff;padding:10px 30px;min-width:170px}.primary:hover{background:#436453}.overlay small{display:block;font-size:11px;color:#617365;margin-top:14px}.back{display:block;font-size:12px;margin-top:12px}.controlbar{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:11px 18px;background:#edf0e5;border-top:1px solid #bac5b3}.keyboard-help,.actions{display:flex;align-items:center;gap:20px;font-size:12px}.actions{gap:10px}.actions button{padding:4px 12px;font-size:12px}#dash-state{color:#55715f;font-size:11px}kbd{font:11px 'Microsoft YaHei',sans-serif;border:1px solid #bac3b4;padding:2px 5px;border-radius:3px;background:#f6f6f0;margin-right:3px}.below{display:flex;justify-content:space-between;align-items:center;color:#617060;font-size:12px;margin:12px 0 26px}.below p{margin:0}.below>span{font-size:10px;letter-spacing:.12em}.tips{display:grid;grid-template-columns:repeat(3,1fr);gap:35px;border-top:1px solid #cbd2c3;padding:18px 0}.tips p{font-size:12px;color:#687267;margin:0}.tips b{display:block;color:var(--ink);font-size:13px;font-weight:500;margin-bottom:6px}footer{display:flex;justify-content:space-between;color:#7a8477;font-size:10px;padding:18px 0 30px}.touch-controls{display:none;justify-content:space-between;padding:12px;background:#edf0e5;border-top:1px solid #bac5b3;user-select:none}.touch-controls>div{display:flex;gap:10px}.touch-controls button{min-width:58px;min-height:48px;touch-action:none;user-select:none}.touch-controls .jump-button{background:var(--ink);color:#fff;min-width:78px}.touch-controls button:active{background:#b9c6af}@media(pointer:coarse){.touch-controls{display:flex}}@media(max-width:720px){main{padding:0 12px}.nav{padding:14px 15px}.nav span:nth-child(2){display:none}.heading{margin:22px 0 16px}h1{font-size:40px}h1 span{font-size:11px;margin-left:12px;padding-left:12px}.lead{display:none}.hud{padding:8px 10px;font-size:10px;gap:10px}.controlbar{padding:8px 10px}.keyboard-help{display:none}.actions{width:100%;justify-content:flex-end}#dash-state{margin-right:auto}.touch-controls{display:flex}.overlay-inner{padding:10px}.overlay h2{font-size:26px;margin:5px 0}.overlay p{font-size:11px;margin:0 0 10px}.overlay .eyebrow,.overlay small{display:none}.primary{padding:6px 22px;min-width:140px}.tips{gap:18px;grid-template-columns:1fr}.below{margin-bottom:20px}.below>span{display:none}footer span:last-child{display:none}.back{margin-top:4px}}@media(max-height:520px) and (orientation:landscape){.nav,.heading,.tips,footer,.below{display:none}main{max-width:1050px;padding:8px}.game-frame{max-width:740px;margin:auto}.hud{padding:3px 12px}.touch-controls{padding:5px}.touch-controls button{min-height:38px}.controlbar{display:none}}
+/* Echo remains legible next to the movement controls, including narrow touch screens. */
+#echo-state{color:#52618d;font-size:11px;white-space:nowrap}.actions{flex-wrap:wrap}.keyboard-help{gap:12px}.echo-button{color:#435785;border-color:#8494b5;background:#e0e5ef}.touch-controls .echo-button:active{background:#b6c2db}
+@media(max-width:720px){.touch-controls{gap:8px}.touch-controls>div{gap:7px}.touch-controls button{min-width:44px;padding:6px 10px;font-size:13px}.touch-controls .jump-button{min-width:58px}#echo-state{margin-right:auto}#dash-state{margin-right:0}.actions{gap:8px}.overlay h2{font-size:24px}}
+@media(max-width:380px){#dash-state{display:none}.touch-controls{padding:10px 8px}}
+#continue{margin-bottom:8px;margin-right:8px}#again{min-width:140px}.actions{gap:8px}.hud{flex-wrap:wrap}#lamps{white-space:nowrap}.keyboard-help span{white-space:nowrap}.controlbar{flex-wrap:wrap}.actions{margin-left:auto}#sound{white-space:nowrap}.overlay-inner{max-width:540px}@media(max-width:720px){.hud span:first-child{flex-basis:100%}.hud{gap:2px 12px}.hud #distance{margin-left:auto}.overlay p{font-size:10px}.overlay h2{font-size:22px}.actions{justify-content:space-between}#echo-state{margin-right:0}.actions #dash-state{display:none}#continue{min-width:130px;margin-right:4px}.overlay #again{min-width:120px}.overlay .primary{font-size:12px;padding:5px 12px}}
+
+</style></head>
+<body><header class="nav"><a href="index.html#return">↖ 返回首页</a><span>交互实验 / 02</span><span>可玩小样</span></header>
+<main><section class="heading"><div><p class="eyebrow">一人前行，借影同行</p><h1>借影<span>屋檐之间</span></h1></div><p class="lead">跑起来，跳过去。<br>落脚之前，让影子托你一步。</p></section>
+<section class="game-frame" aria-label="横版跳跃游戏"><div class="hud"><span id="objective">集齐 12 盏开启山门</span><span id="lamps">风灯 0 / 18</span><span id="distance">路程 0%</span></div>
+<div id="stage" class="stage" tabindex="0" role="group" aria-label="游戏区域。左右移动，空格二段跳，Shift 冲刺，E 留影，P 暂停，R 重来。" aria-describedby="help"><canvas id="scene" width="960" height="480" aria-label="山间屋檐上的火柴人横版跳跃关卡">需要支持 Canvas 的浏览器。</canvas>
+<div id="intro" class="overlay"><div class="overlay-inner"><span class="eyebrow">横版跳跃 · 第一程</span><h2>让影子，托你一程。</h2><p>12 盏开山门，18 盏挑战全收集。<br>空中 E 留影；躲开巡游风刃，到灯亭存下风灯。</p><button id="start" class="primary">出发 →</button><small>失误丢失未存的风灯 · 点击出发启用音效</small></div></div>
+<div id="paused" class="overlay" hidden><div class="overlay-inner"><span class="eyebrow">风也歇一会儿</span><h2>停在这里。</h2><button id="resume" class="primary">继续出发 →</button></div></div>
+<div id="ending" class="overlay" hidden><div class="overlay-inner"><span class="eyebrow">第一程 · 已抵达</span><h2 id="finish-title">山门已开。</h2><p id="result"></p><button id="continue" class="primary">继续挑战全收集</button><button id="again" class="primary">再跑一程 →</button><a class="back" href="index.html#return">返回首页</a></div></div></div>
+<div class="controlbar"><div class="keyboard-help"><span><kbd>←</kbd><kbd>→</kbd> 移动</span><span><kbd>空格</kbd> 二段跳</span><span><kbd>Shift</kbd> 冲刺</span><span><kbd>E</kbd> 留影</span></div><div class="actions"><button id="sound" aria-pressed="true">音效：开</button><span id="echo-state">E 留影就绪</span><span id="dash-state">冲刺就绪</span><button id="pause" disabled>暂停</button><button id="restart">重来</button></div></div>
+<div class="touch-controls" aria-label="触屏操作"><div><button data-control="left" aria-label="向左移动">←</button><button data-control="right" aria-label="向右移动">→</button></div><div><button data-control="echo" class="echo-button">留影</button><button data-control="dash">冲刺</button><button data-control="jump" class="jump-button">跳跃</button></div></div></section>
+<div class="below"><p id="status" role="status" aria-live="polite">点“出发”，开始这一程。</p><span>01 / 山间试跑</span></div>
+<section id="help" class="tips"><p><b>跳得更远</b>按住跳跃跳得高，轻点跳得低。半空再按一次，接上第二跳。</p><p><b>让影子接住你</b>空中按 E（或“留影”），影子托住你 4 秒，恢复二段跳与冲刺。落回屋檐后可以再次留影。</p><p><b>带着风灯活着回来</b>低处风灯需要下探后借影返回。碰到尖刺或巡游风刃，会丢失未存下的风灯；到任一灯亭落脚保存。12 盏开门，18 盏全收集。</p></section>
+<footer><span>独立玩法小样 · 不涉及原作剧情</span><span>方向键 / A D · 空格 / W / ↑ · Shift / X · E 留影 · P 暂停</span></footer></main>
+<script>
+(function(root){
+'use strict';
+const STEP=1/60,W=960,H=480,END=3480,REQUIRED=12;
+const platforms=[[0,410,520],[700,410,360],[1060,370,140],[1350,410,340],[1690,350,180],[2070,410,330],[2400,360,270],[2910,410,690],[810,292,140],[1420,285,135],[2160,275,155],[3050,290,170],[565,126,155]].map(([x,y,w])=>({x,y,w}));
+const lamps=[[230,366],[465,340],[610,272],[850,245],[1125,326],[1280,240],[1478,236],[1780,306],[1970,218],[2215,226],[2540,316],[2790,220],[3115,242],[3320,348],[638,89],[615,418],[1980,425],[2790,425]].map(([x,y],id)=>({x,y,id}));
+const spikes=[{x:1505,w:95,y:410},{x:2245,w:100,y:410},{x:3170,w:105,y:410}];
+const checkpoints=[{x:80,y:410},{x:1390,y:410},{x:2430,y:360}];
+const sentries=[{x:1260,y:260,range:65,speed:1.8,phase:0},{x:1950,y:220,range:85,speed:1.5,phase:1},{x:2780,y:276,range:95,speed:1.7,phase:2}];
+function hazards(s){return sentries.map(h=>({x:h.x+Math.sin(s.ticks*STEP*h.speed+h.phase)*h.range,y:h.y,r:18}));}
+function create(){return {player:{x:80,y:410,vx:0,vy:0,face:1,ground:true,jumps:0,coyote:.1,buffer:0,dash:0,dashReady:true},started:false,paused:false,won:false,ticks:0,camera:0,collected:[],banked:[],sounds:[],gateNotice:0,seekingAll:false,checkpoint:0,falls:0,echo:null,echoReady:true,echoUses:0,onEcho:false,trail:[],particles:[],shake:0,invulnerable:0,event:''};}
+function burst(s,x,y,color,n=10){for(let i=0;i<n;i++)s.particles.push({x,y,vx:Math.cos(i*2.4)*90,vy:Math.sin(i*2.4)*90,life:.5,color});}
+function respawn(s){const c=checkpoints[s.checkpoint];Object.assign(s.player,{x:c.x,y:c.y,vx:0,vy:0,ground:true,jumps:0,coyote:.1,buffer:0,dash:0,dashReady:true});s.collected=[...s.banked];s.sounds.push('hurt');s.echo=null;s.echoReady=true;s.onEcho=false;s.falls++;s.invulnerable=.8;s.shake=.22;s.event='回到灯亭；未存下的风灯已回到原处。';s.trail=[];}
+function step(s,input={}){
+if(!s.started||s.paused||s.won)return;
+s.ticks++;s.event='';s.sounds=[];s.gateNotice=Math.max(0,s.gateNotice-STEP);const p=s.player,dt=STEP;
+if(s.echo){s.echo.life-=dt;if(s.echo.life<=0){s.echo=null;if(s.onEcho){p.ground=false;s.onEcho=false;}s.event='影子散去了，落回屋檐就能再留影。';}}
+if(input.echo){
+ if(p.ground)s.event='跳到空中，按 E 让影子接住你。';
+ else if(!s.echoReady)s.event='先落回屋檐，才能再次留影。';
+ else if(p.y>480||p.y<65)s.event='这里留不住影子，回到屋檐再试。';
+ else{s.echo={x:p.x-58,y:p.y,w:116,life:4};s.echoReady=false;s.echoUses++;s.sounds.push('echo');s.onEcho=true;p.vy=0;p.dash=0;p.ground=true;p.jumps=0;p.dashReady=true;p.coyote=.1;burst(s,p.x,p.y,'#687aab',14);s.event='影子接住你了！再按跳跃，借它跃向高处。';}
+}
+s.invulnerable=Math.max(0,s.invulnerable-dt);s.shake=Math.max(0,s.shake-dt);
+if(input.jump)p.buffer=.13;else p.buffer=Math.max(0,p.buffer-dt);
+p.coyote=p.ground?.1:Math.max(0,p.coyote-dt);
+const axis=(input.right?1:0)-(input.left?1:0);if(axis)p.face=axis;
+if(p.buffer>0&&(p.ground||p.coyote>0||p.jumps<2)){const first=p.ground||p.coyote>0;p.vy=first?-585:-535;p.jumps=first?1:2;p.ground=false;p.coyote=0;p.buffer=0;p.dash=0;s.sounds.push(first?'jump':'double');burst(s,p.x,p.y,first?'#7c9788':'#d89f58',6);}
+if(input.dash&&p.dashReady){p.dash=.17;p.dashReady=false;p.vy=0;s.sounds.push('dash');s.event='借风！';}
+const oldY=p.y,oldX=p.x;
+if(p.dash>0){p.dash=Math.max(0,p.dash-dt);p.vx=p.face*730;p.vy=0;s.trail.push({x:p.x,y:p.y,face:p.face,life:.23});}
+else{const target=axis*305,accel=p.ground?2300:1600;p.vx+=Math.sign(target-p.vx)*Math.min(Math.abs(target-p.vx),accel*dt);if(input.release&&p.vy< -180)p.vy=-180;p.vy=Math.min(850,p.vy+1550*dt);}
+p.x=Math.max(14,Math.min(3580,p.x+p.vx*dt));p.y+=p.vy*dt;if(p.y<65){p.y=65;p.vy=Math.max(0,p.vy);}p.ground=false;s.onEcho=false;
+for(const plat of platforms){if(plat.y<350||p.y<=plat.y+1)continue;if(oldX+10<=plat.x&&p.x+10>plat.x){p.x=plat.x-10;p.vx=0;}else if(oldX-10>=plat.x+plat.w&&p.x-10<plat.x+plat.w){p.x=plat.x+plat.w+10;p.vx=0;}}
+// The closest crossed surface wins; an echo is one-way and never refills itself.
+if(p.vy>=0){const surface=[...platforms,...(s.echo?[s.echo]:[])].filter(plat=>p.x+10>plat.x&&p.x-10<plat.x+plat.w&&oldY<=plat.y+.1&&p.y>=plat.y).sort((a,b)=>a.y-b.y)[0];if(surface){p.y=surface.y;p.vy=0;p.ground=true;p.jumps=0;s.onEcho=surface===s.echo;if(!s.onEcho)s.echoReady=true;if(p.dash<=0)p.dashReady=true;}}
+if(!p.ground&&p.coyote<=0&&p.jumps===0)p.jumps=1;
+for(let i=0;i<checkpoints.length;i++)if(Math.abs(p.x-checkpoints[i].x)<40&&Math.abs(p.y-checkpoints[i].y)<12&&p.ground&&!s.onEcho){if(i!==s.checkpoint||s.collected.length>s.banked.length){s.checkpoint=i;s.banked=[...s.collected];s.sounds.push('checkpoint');s.event='灯亭已保存 '+s.banked.length+' 盏风灯。';burst(s,p.x,p.y-30,'#ce9650',18);}}
+for(const l of lamps)if(!s.collected.includes(l.id)&&Math.hypot(p.x-l.x,p.y-24-l.y)<24){s.collected.push(l.id);s.sounds.push('collect');burst(s,l.x,l.y,'#cf9650');s.event='拾得一盏风灯。';}
+const hurt=spikes.some(h=>p.x+9>h.x&&p.x-9<h.x+h.w&&p.y>h.y-19&&p.y-44<h.y)||hazards(s).some(h=>Math.hypot(h.x-Math.max(p.x-9,Math.min(h.x,p.x+9)),h.y-Math.max(p.y-52,Math.min(h.y,p.y)))<h.r);
+if(p.y>H+130||(hurt&&s.invulnerable===0))respawn(s);
+if(p.x>=END&&p.ground){const needed=s.seekingAll?lamps.length:REQUIRED;if(s.collected.length>=needed){s.won=true;s.banked=[...s.collected];s.sounds.push('win');s.event=s.collected.length===lamps.length?'十八盏风灯，全灯归来。':'山门已开，还可以继续挑战全收集。';burst(s,p.x,p.y-30,'#cf9650',24);}else{p.x=END-1;p.vx=0;if(s.gateNotice===0){s.event='还差 '+(needed-s.collected.length)+' 盏风灯，回头找找。';s.sounds.push('locked');s.gateNotice=2;}}}
+s.camera+=(Math.max(0,Math.min(2640,p.x-290))-s.camera)*.09;
+s.trail=s.trail.filter(t=>(t.life-=dt)>0);
+s.particles=s.particles.filter(t=>{t.x+=t.vx*dt;t.y+=t.vy*dt;t.vy+=120*dt;return(t.life-=dt)>0;});
+}
+const api={STEP,W,H,END,REQUIRED,sentries,hazards,platforms,lamps,spikes,checkpoints,create,step};if(typeof module!=='undefined')module.exports=api;root.ShadowCore=api;
+})(typeof globalThis!=='undefined'?globalThis:this);
+
+</script><script>
+(function(root){
+'use strict';
+const C=root.ShadowCore;
+function paint(g,s,reduced=false){
+const cam=s.camera,t=s.ticks/60,ink='#29413e';
+g.rect(0,0,960,480,'#e9ebdf');g.circle(754-cam*.035,99,49,'#d9b78a');g.circle(743-cam*.035,89,49,'#e9ebdf');
+// Layered mountain ridges move at different speeds behind the playfield.
+for(let layer=0;layer<3;layer++){const factor=[.09,.19,.32][layer],base=[312,355,410][layer],col=['#d3dbcc','#b9cbbd','#96b4a7'][layer];for(let j=-1;j<5;j++){const x=j*510-(cam*factor)%510;g.path([['M',x,480],['L',x,base],['Q',x+70,base-50,x+140,base-145],['Q',x+174,base-184,x+217,base-115],['Q',x+290,base-35,x+350,base-80],['Q',x+440,base-130,x+530,base],['L',x+530,480],['Z']],col);}}
+for(let i=0;i<7;i++){const x=((i*167+(reduced?0:t*13)-cam*.1)%1100+1100)%1100-80,y=58+i%3*53;g.path([['M',x,y],['Q',x+30,y-6,x+72,y]],null,'#c2cdbd',1);}
+// Tiny distant pavilion gives the skyline a human scale.
+const px=615-cam*.2;g.rect(px,266,52,37,'#90aa9b');g.path([['M',px-18,268],['Q',px+26,250,px+26,239],['Q',px+26,252,px+70,268],['Z']],'#79968a');
+for(const p of C.platforms){const x=p.x-cam;if(x+p.w<0||x>960)continue;const floating=p.y<310;
+ g.rect(x,p.y+5,p.w,floating?15:480-p.y,'#4b6d63');g.rect(x,p.y+5,p.w,6,'#294c46');
+ g.path([['M',x-8,p.y],['L',x+p.w+8,p.y],['L',x+p.w,p.y+5],['L',x,p.y+5],['Z']],ink);
+ g.line(x+3,p.y-2,x+p.w-3,p.y-2,'#c5d0b4',3);
+ for(let k=12;k<p.w;k+=27)g.line(x+k,p.y+8,x+k-5,p.y+14,'#749182',1);
+ if(!floating){for(let k=28;k<p.w;k+=96)g.rect(x+k,p.y+26,19,55,'#426258');}
+}
+g.text('借影高台',577-cam,158,11,'#52618d');
+if(s.echo){const e=s.echo,x=e.x-cam+e.w/2,y=e.y,a=Math.min(.85,.3+e.life*.4),col='#596d9b';
+ g.rect(x-58,y-3,116,8,'#bcc6df',a*.6);
+ g.path([['M',x-58,y],['Q',x,y-2,x+58,y]],null,col,3,a);
+ // The helper holds the landing surface above its head, with visibly raised arms.
+ g.circle(x,y+24,7,col,a);
+ g.path([['M',x,y+34],['L',x,y+48],['M',x,y+37],['L',x-19,y+23],['L',x-29,y+2],['M',x,y+37],['L',x+19,y+23],['L',x+29,y+2],['M',x,y+48],['L',x-13,y+57],['L',x-23,y+61],['M',x,y+48],['L',x+13,y+57],['L',x+23,y+61]],null,col,3.5,a);
+ g.rect(x-45,y+73,90,2,'#c0c9dc');g.rect(x-45,y+73,90*Math.max(0,e.life/4),2,col);
+ g.text('影 · '+Math.ceil(e.life)+' 秒',x+64,y+12,11,col);
+}
+for(let i=0;i<C.checkpoints.length;i++){const p=C.checkpoints[i],x=p.x-cam;if(x< -70||x>1000)continue;g.line(x-20,p.y,x-20,p.y-88,ink,4);g.line(x-20,p.y-86,x+17,p.y-86,ink,3);g.line(x+13,p.y-86,x+13,p.y-70,ink,1);g.circle(x+13,p.y-59,16,i===s.checkpoint?'#dfb365':'#b5c3aa');g.rect(x+4,p.y-71,18,23,i===s.checkpoint?'#d29a4f':'#9cad96');g.line(x+13,p.y-47,x+13,p.y-37,'#8a7450',2);if(i>0)g.text(i===s.checkpoint?'已点亮':'灯亭',x-22,p.y-105,11,'#526c5a');}
+for(const h of C.spikes){const x=h.x-cam;for(let k=0;k<h.w;k+=14)g.path([['M',x+k,h.y],['L',x+k+7,h.y-18],['L',x+k+14,h.y],['Z']],'#aa624d');}
+for(let i=0;i<C.sentries.length;i++){const rail=C.sentries[i],h=C.hazards(s)[i],x=h.x-cam;if(x< -140||x>1100)continue;g.line(rail.x-rail.range-cam,h.y,rail.x+rail.range-cam,h.y,'#b88776',1);g.circle(x,h.y,20,'#f4e3d1',.7);for(let arm=0;arm<4;arm++){const angle=arm*Math.PI/2+(reduced?0:t*3),ax=Math.cos(angle),ay=Math.sin(angle);g.path([['M',x+ax*5,h.y+ay*5],['L',x+ax*18-ay*4,h.y+ay*18+ax*4],['L',x+ax*5-ay*9,h.y+ay*5+ax*9],['Z']],'#a94b40');}g.circle(x,h.y,4,'#813a34');}
+for(const l of C.lamps){if(s.collected.includes(l.id))continue;const x=l.x-cam,y=l.y+(reduced?0:Math.sin(t*2+l.id)*3);if(x< -20||x>980)continue;g.circle(x,y,15,'#dec794',.24);g.path([['M',x,y-10],['L',x+7,y],['L',x,y+10],['L',x-7,y],['Z']],'#b8813e');g.line(x,y+10,x,y+16,'#b8813e',1);g.circle(x,y,2,'#f7edc8');}
+// Gate at the end of the course.
+const ex=3480-cam;g.rect(ex-28,304,7,106,ink);g.rect(ex+34,304,7,106,ink);g.path([['M',ex-48,302],['Q',ex+7,295,ex+7,279],['Q',ex+7,295,ex+61,302],['L',ex+49,311],['L',ex-37,311],['Z']],ink);if(s.collected.length<(s.seekingAll?C.lamps.length:C.REQUIRED)){g.line(ex-21,347,ex+34,384,'#ac624d',4);g.line(ex-21,384,ex+34,347,'#ac624d',4);}g.text(s.collected.length+' / '+(s.seekingAll?C.lamps.length:C.REQUIRED)+' 盏',ex-23,275,12,ink);g.rect(ex-11,313,35,26,'#d0b080');g.text('山门',ex-6,331,12,ink);
+const signs=[[260,315,'轻点跳低 · 按住跳高'],[540,220,'空中 E 留影 · 再跳登高'],[1100,175,'看准风刃空隙再跳'],[2570,170,'低处取灯 · 留影折返']];for(const [x,y,txt]of signs){if(x===540&&s.echoUses>0)continue;if(x-cam> -180&&x-cam<960)g.text(txt,x-cam,y,12,'#526c5a');}
+function figure(x,y,face,phase,air,dashing,color,alpha=1){const lean=dashing?14:air?4:Math.sin(phase)*1.5,hipX=x+lean*.35,hipY=y-20,neckX=x+lean,neckY=y-40;const stride=air?8:Math.sin(phase)*13;
+ g.circle(neckX,y-50,7.2,color,alpha);g.path([['M',neckX,neckY],['Q',hipX-2,y-29,hipX,hipY]],null,color,4,alpha);
+ g.path([['M',hipX,hipY],['L',x+stride,y-11],['L',x+stride*.9+(air?-8:0),y-1],['M',hipX,hipY],['L',x-stride,y-10],['L',x-stride*.9+(air?7:0),y-2]],null,color,3.5,alpha);
+ g.path([['M',neckX,neckY+5],['L',x-stride*.7,y-30],['L',x-stride-3,y-37],['M',neckX,neckY+5],['L',x+stride*.7,y-28],['L',x+stride+5,y-32]],null,color,3,alpha);
+ if(alpha===1){g.path([['M',neckX,neckY],['Q',neckX-face*16,neckY-9,neckX-face*(dashing?49:29),neckY-2],['Q',neckX-face*14,neckY-2,neckX,neckY+3],['Z']],'#b65c45');}}
+if(!reduced)for(const tr of s.trail)figure(tr.x-cam,tr.y,tr.face,1,true,true,'#649b89',tr.life*.8);
+const p=s.player,phase=p.ground&&Math.abs(p.vx)>10?t*19:0;if(s.invulnerable===0||s.ticks%8<5)figure(p.x-cam,p.y,p.face,phase,!p.ground,p.dash>0,ink);
+if(!reduced)for(const a of s.particles)g.circle(a.x-cam,a.y,2,a.color,Math.min(1,a.life*2));
+g.rect(0,469,960,11,'#d9e1d1',.65);
+}
+function render(ctx,s,reduced){const g={rect(x,y,w,h,c,a=1){ctx.globalAlpha=a;ctx.fillStyle=c;ctx.fillRect(x,y,w,h);},circle(x,y,r,c,a=1){ctx.globalAlpha=a;ctx.fillStyle=c;ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);ctx.fill();},path(cmds,fill,stroke,width=1,a=1){ctx.globalAlpha=a;ctx.beginPath();for(const [op,...v]of cmds){if(op==='M')ctx.moveTo(...v);else if(op==='L')ctx.lineTo(...v);else if(op==='Q')ctx.quadraticCurveTo(...v);else if(op==='Z')ctx.closePath();}if(fill){ctx.fillStyle=fill;ctx.fill();}if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=width;ctx.lineCap='round';ctx.lineJoin='round';ctx.stroke();}},line(x,y,xx,yy,c,w=1){this.path([['M',x,y],['L',xx,yy]],null,c,w);},text(txt,x,y,size,c){ctx.globalAlpha=1;ctx.fillStyle=c;ctx.font=size+'px "Microsoft YaHei", sans-serif';ctx.fillText(txt,x,y);}};paint(g,s,reduced);ctx.globalAlpha=1;}
+const api={paint,render};if(typeof module!=='undefined')module.exports=api;root.ShadowArt=api;
+})(typeof globalThis!=='undefined'?globalThis:this);
+
+</script><script>
+(function(root){
+'use strict';
+// Short synthesized cues: no downloads, music, or audio before a user gesture.
+const cues={
+ jump:[[260,430,.10,0,'sine',.11]], double:[[410,720,.13,0,'sine',.10]],
+ dash:[[180,65,.14,0,'triangle',.08]],
+ echo:[[220,440,.25,0,'sine',.09],[330,660,.28,.04,'sine',.07]],
+ collect:[[880,1100,.14,0,'sine',.08],[1320,1320,.18,.065,'sine',.05]],
+ checkpoint:[[440,440,.2,0,'sine',.07],[550,550,.2,.09,'sine',.07],[660,660,.3,.18,'sine',.07]],
+ hurt:[[145,55,.23,0,'triangle',.09]], locked:[[180,160,.12,0,'sine',.06]],
+ win:[[440,440,.24,0,'sine',.08],[554,554,.24,.12,'sine',.08],[659,659,.25,.24,'sine',.08],[880,880,.5,.38,'sine',.07]]
+};
+function create(){let ctx=null,master=null,muted=false,available=!!(root.AudioContext||root.webkitAudioContext);const active=new Set();
+ try{muted=root.localStorage?.getItem('loren-shadow-muted')==='1';}catch{}
+ function silence(){for(const node of active){try{node.stop();}catch{}}active.clear();}
+ function unlock(){if(!available)return;try{if(!ctx){const AC=root.AudioContext||root.webkitAudioContext;ctx=new AC();master=ctx.createGain();master.gain.value=muted?0:.45;master.connect(ctx.destination);}if(ctx.state==='suspended')ctx.resume().catch(()=>{});}catch{available=false;}}
+ function setMuted(value){muted=!!value;silence();if(master)master.gain.setValueAtTime(muted?0:.45,ctx.currentTime);try{root.localStorage?.setItem('loren-shadow-muted',muted?'1':'0');}catch{}return muted;}
+ function play(name){if(!ctx||muted||!available||!cues[name])return;try{for(const [from,to,duration,delay,type,volume] of cues[name]){const time=ctx.currentTime+delay,osc=ctx.createOscillator(),gain=ctx.createGain();osc.type=type;osc.frequency.setValueAtTime(from,time);osc.frequency.exponentialRampToValueAtTime(to,time+duration);gain.gain.setValueAtTime(.0001,time);gain.gain.exponentialRampToValueAtTime(volume,time+.012);gain.gain.exponentialRampToValueAtTime(.0001,time+duration);osc.connect(gain);gain.connect(master);active.add(osc);osc.onended=()=>{active.delete(osc);osc.disconnect();gain.disconnect();};osc.start(time);osc.stop(time+duration+.02);}}catch{silence();available=false;}}
+ return {unlock,play,silence,setMuted,get muted(){return muted;},get available(){return available;}};
+}
+root.ShadowSound={create,cues};if(typeof module!=='undefined')module.exports={create,cues};
+})(typeof window!=='undefined'?window:globalThis);
+
+</script><script>
+(function(){
+'use strict';
+const C=ShadowCore,$=id=>document.getElementById(id),canvas=$('scene'),ctx=canvas.getContext('2d'),stage=$('stage');
+let s=C.create(),last=0,acc=0,raf=0,viewW=960,viewH=480;const keys=new Set(),pointers=new Map();let jump=false,dash=false,release=false,echo=false;
+const sound=ShadowSound.create();
+const motion=matchMedia('(prefers-reduced-motion: reduce)');
+function clear(){keys.clear();pointers.clear();physical.clear();jump=dash=release=echo=false;}
+function resize(){const r=canvas.getBoundingClientRect(),dpr=Math.min(window.devicePixelRatio||1,3);viewW=Math.max(1,r.width);viewH=Math.max(1,r.height);canvas.width=Math.round(viewW*dpr);canvas.height=Math.round(viewH*dpr);draw();}
+function draw(){ctx.setTransform(canvas.width/C.W,0,0,canvas.height/C.H,0,0);ShadowArt.render(ctx,s,motion.matches);}
+function status(text){if(text)$('status').textContent=text;}
+function update(){$('echo-state').textContent=s.echo?'影子 '+s.echo.life.toFixed(1)+' 秒'+(s.echoReady?' · 可重留':''):s.echoReady?'E 留影就绪':'落回屋檐恢复留影';const count=s.collected.length;$('lamps').textContent='风灯 '+count+' / '+C.lamps.length+' · 已存 '+s.banked.length;$('distance').textContent='路程 '+Math.round(Math.max(0,Math.min(100,(s.player.x-80)/(C.END-80)*100)))+'%';$('dash-state').textContent=s.player.dashReady?'冲刺就绪':'落地恢复冲刺';$('objective').textContent=s.seekingAll?'全收集挑战 · 18 盏归来':count<C.REQUIRED?'集齐 12 盏开启山门':'山门已开启 · 可挑战 18 盏';}
+function start(){sound.silence();sound.unlock();soundLabel();s=C.create();s.started=true;clear();last=0;acc=0;$('intro').hidden=true;$('ending').hidden=true;$('paused').hidden=true;$('pause').disabled=false;stage.focus();status('先向右跳起来。空中按 E 留影，再按空格借影起跳。');update();draw();}
+function pause(){if(!s.started||s.won||s.paused)return;s.paused=true;sound.silence();clear();$('paused').hidden=false;$('pause').disabled=true;$('resume').focus();status('已暂停。');}
+function resume(){if(!s.started||s.won)return;sound.unlock();s.paused=false;last=0;acc=0;clear();$('paused').hidden=true;$('pause').disabled=false;stage.focus();status('继续向右，去追那阵风。');}
+function finish(){clear();$('finish-title').textContent=s.collected.length===C.lamps.length?'全灯归来。':'山门已开。';$('continue').hidden=s.collected.length===C.lamps.length;$('ending').hidden=false;$('pause').disabled=true;$('result').textContent='带回 '+s.collected.length+' / '+C.lamps.length+' 盏风灯，用时 '+Math.floor(s.ticks/60)+' 秒，借影 '+s.echoUses+' 次。'+(s.collected.length<C.lamps.length?'可以继续回头寻找剩余风灯。':'这一程的风灯，都被你找到了。');$('again').focus();status('已抵达山门。');}
+function loop(now){raf=0;if(document.hidden)return;const elapsed=last?Math.min(.1,(now-last)/1000):0;last=now;if(s.started&&!s.paused&&!s.won){acc+=elapsed;while(acc>=C.STEP){const controls=new Set([...keys,...pointers.values()]);C.step(s,{left:controls.has('left'),right:controls.has('right'),jump,dash,release,echo});jump=dash=release=echo=false;acc-=C.STEP;status(s.event);for(const cue of s.sounds)sound.play(cue);if(s.won){finish();break;}}update();}draw();raf=requestAnimationFrame(loop);}
+const map={ArrowLeft:'left',KeyA:'left',ArrowRight:'right',KeyD:'right',Space:'jump',KeyW:'jump',ArrowUp:'jump',ShiftLeft:'dash',ShiftRight:'dash',KeyX:'dash',KeyE:'echo'};
+const physical=new Map();
+document.addEventListener('keydown',e=>{if(e.target!==stage)return;const action=map[e.code];if(action){e.preventDefault();if(e.repeat||physical.has(e.code))return;physical.set(e.code,action);keys.add(action);if(action==='jump')jump=true;if(action==='dash')dash=true;if(action==='echo')echo=true;}else if(e.code==='KeyP'||e.code==='Escape'){e.preventDefault();pause();}else if(e.code==='KeyR'){e.preventDefault();start();}});
+document.addEventListener('keyup',e=>{const action=physical.get(e.code);physical.delete(e.code);if(action&&![...physical.values()].includes(action)){keys.delete(action);if(action==='jump')release=true;}});
+for(const btn of document.querySelectorAll('[data-control]')){btn.addEventListener('pointerdown',e=>{e.preventDefault();if(!s.started||s.paused||s.won)return;btn.setPointerCapture(e.pointerId);stage.focus();const a=btn.dataset.control;pointers.set(e.pointerId,a);if(a==='jump')jump=true;if(a==='dash')dash=true;if(a==='echo')echo=true;});const up=e=>{const a=pointers.get(e.pointerId);pointers.delete(e.pointerId);if(a==='jump')release=true;};btn.addEventListener('pointerup',up);btn.addEventListener('pointercancel',up);btn.addEventListener('lostpointercapture',up);}
+function soundLabel(){$('sound').textContent=sound.available?(sound.muted?'音效：关':'音效：开'):'音效不可用';$('sound').setAttribute('aria-pressed',String(!sound.muted&&sound.available));}
+$('sound').addEventListener('click',()=>{sound.unlock();sound.setMuted(!sound.muted);soundLabel();if(s.started&&!s.paused&&!s.won)stage.focus();});
+$('continue').addEventListener('click',()=>{s.won=false;s.seekingAll=true;s.player.x=C.END-90;s.player.vx=0;s.player.vy=0;s.player.ground=true;clear();last=0;acc=0;$('ending').hidden=true;$('pause').disabled=false;sound.unlock();stage.focus();status('已保存现有风灯；可以回头探索。集齐 18 盏后再回山门。');update();});
+$('start').addEventListener('click',start);$('again').addEventListener('click',start);$('restart').addEventListener('click',start);$('pause').addEventListener('click',pause);$('resume').addEventListener('click',resume);
+window.addEventListener('blur',()=>{sound.silence();physical.clear();clear();pause();});stage.addEventListener('blur',()=>{physical.clear();clear();});
+document.addEventListener('visibilitychange',()=>{if(document.hidden){sound.silence();physical.clear();pause();cancelAnimationFrame(raf);raf=0;}else if(!raf){last=0;raf=requestAnimationFrame(loop);}});
+window.addEventListener('resize',resize);soundLabel();resize();update();raf=requestAnimationFrame(loop);
+})();
+
+</script></body></html>
