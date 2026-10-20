@@ -245,6 +245,7 @@ html.is-booting { overflow: hidden; }
   .reveal-message { white-space: normal; max-width: 205px; line-height: 1.7; }
 }
 .experience-link{display:inline-flex;align-items:center;gap:28px;margin-top:22px;padding:14px 21px;border:1px solid var(--project-accent);border-radius:30px;color:var(--project-accent);text-decoration:none;font-size:14px}.experience-link:hover{background:rgba(196,173,119,.12)}.experience-link[hidden],.experience-pending[hidden]{display:none!important}
+.game-choice{padding-left:27px;border-left:1px solid #78826940}.choice-caption{font-size:14px;line-height:1.9;color:#626b59;margin:0 0 28px}.choice-item{display:grid;grid-template-columns:22px minmax(0,1fr) 20px;align-items:center;gap:14px;width:100%;padding:23px 0;border:0;border-top:1px solid #78826955;background:transparent;text-align:left;color:#383b33;cursor:pointer;font:inherit}.choice-item:last-child{border-bottom:1px solid #78826955}.choice-item:hover{background:#e4e5d960}.choice-number{font-size:11px;color:#795d2e}.choice-item strong{display:block;font-size:21px;font-weight:500;line-height:1.5}.choice-item small{display:block;font-size:12px;color:#626b59;line-height:1.8;margin-top:6px}.back-to-choice{display:block;min-height:44px;margin:0 0 18px;padding:0;border:0;background:none;color:var(--project-accent);font:inherit;font-size:12px;cursor:pointer}.choice-item:focus-visible,.back-to-choice:focus-visible{outline:2px solid var(--project-accent);outline-offset:5px}#choice-title:focus{outline:none}@media(max-width:760px){.game-choice{padding-left:22px}.choice-item{gap:10px}.choice-item strong{font-size:20px}}
 /* Soft reflected light stays behind the portrait; no pointer tracking. */
 .light-wash{position:absolute;inset:85px -12% 0;overflow:hidden;opacity:.58;pointer-events:none;contain:paint}.light-wash i{position:absolute;display:block;width:110%;height:32%;left:-10%;top:25%;border-radius:50%;background:linear-gradient(166deg,transparent 24%,#e7c88408 36%,#fffaf9a3 45%,#d5b67518 51%,transparent 61%);filter:blur(18px);transform:rotate(-15deg);animation:light-drift 24s ease-in-out infinite alternate}.light-wash i+ i{top:51%;height:26%;left:6%;background:linear-gradient(164deg,transparent 25%,#c6ceb012 39%,#fffdf478 46%,#d7c18a12 52%,transparent 65%);animation-duration:31s;animation-delay:-12s}.is-detail .light-wash{opacity:.24}.tab-hidden .light-wash i{animation-play-state:paused}@keyframes light-drift{from{transform:translate3d(-5%,-8%,0) rotate(-15deg) scale(1)}to{transform:translate3d(8%,13%,0) rotate(-7deg) scale(1.06)}}
 .motion-preview{margin:22px 0 20px;overflow:hidden;border:1px solid #aeb49d65;border-radius:10px;background:#e9ebdf;isolation:isolate}.motion-preview-player{width:100%;aspect-ratio:16/9;overflow:hidden;pointer-events:none}.preview-toolbar{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 12px;background:#eeeadf;border-top:1px solid #aeb49d40}.preview-label-text{font-size:10px;line-height:1.6;color:#5e6853}.preview-toggle{flex-shrink:0;border:1px solid #929e8070;border-radius:20px;background:transparent;color:#526244;font:10px 'Microsoft YaHei',sans-serif;padding:7px 10px;cursor:pointer}.preview-toggle:hover{background:#e0e5d3}.preview-toggle:disabled{cursor:default;color:#68705f}.preview-fallback{display:grid;place-items:center;text-align:center;width:100%;height:100%;padding:18px;color:#58634c;font-size:12px}.project-detail{width:35%;max-width:490px;margin-right:4%}.detail-copy{animation:none}@media(max-width:1000px) and (min-width:761px){.project-detail{width:38%;margin-right:3%}}@media(max-width:760px){.project-detail{width:auto;max-width:none;margin-right:7%}.preview-toolbar{padding:9px 10px}.light-wash{inset:70px -25% 0}.light-wash i{filter:blur(12px)}}@media(prefers-reduced-motion:reduce){.light-wash i{animation:none!important;transform:rotate(-12deg)}}
@@ -333,7 +334,7 @@ globalThis.bootWatchdog = setTimeout(() => {
           </svg>
           <div class="sticker-hotspots" aria-label="脸部贴纸入口">
             <button class="sticker reviews" data-project="reviews" aria-label="对话气泡贴纸：用户评论分析" aria-controls="project-detail" aria-pressed="false"></button>
-            <button class="sticker game" data-project="game" aria-label="手柄贴纸：借影小游戏" aria-controls="project-detail" aria-pressed="false"></button>
+            <button class="sticker game" data-project="game" aria-label="手柄贴纸：小说写作团队与小游戏" aria-controls="project-detail" aria-pressed="false"></button>
             <button class="sticker heart" data-project="heart" aria-label="爱心贴纸：AI 心理健康内容设计" aria-controls="project-detail" aria-pressed="false"></button>
             <button class="sticker growth" data-project="growth" aria-label="图表贴纸：门店数据报表工具" aria-controls="project-detail" aria-pressed="false"></button>
           </div>
@@ -346,14 +347,22 @@ globalThis.bootWatchdog = setTimeout(() => {
         <p class="interaction-hint">点一点脸上的贴纸</p>
         <div class="project-nav" id="project-nav" aria-label="作品快捷入口">
           <button data-project="reviews" aria-controls="project-detail" aria-pressed="false">用户评论分析</button>
-          <button data-project="game" aria-controls="project-detail" aria-pressed="false">借影小游戏</button>
+          <button data-project="game" aria-controls="project-detail" aria-pressed="false">小说团队与小游戏</button>
           <button data-project="heart" aria-controls="project-detail" aria-pressed="false">AI 内容</button>
           <button data-project="growth" aria-controls="project-detail" aria-pressed="false">报表工具</button>
         </div>
       </div>
       <section class="project-detail" id="project-detail" aria-labelledby="detail-title" hidden>
         <button class="close-detail" type="button">↖ 返回全貌 <kbd>Esc</kbd></button>
+        <div class="game-choice" hidden>
+          <p class="detail-meta">02 / 创作与互动</p>
+          <h1 id="choice-title" tabindex="-1">这次想看哪一个？</h1>
+          <p class="choice-caption">从故事创作，到亲手试玩。</p>
+          <button class="choice-item" type="button" data-game-choice="novel" aria-controls="project-detail"><span class="choice-number">01</span><span><strong>小说协作团队</strong><small>Agent 设计 · 分工、审读与修订</small></span><span aria-hidden="true">↗</span></button>
+          <button class="choice-item" type="button" data-game-choice="game" aria-controls="project-detail"><span class="choice-number">02</span><span><strong>小游戏《借影》</strong><small>横版跳跃 · 屋檐之间</small></span><span aria-hidden="true">↗</span></button>
+        </div>
         <div class="detail-copy" aria-live="polite" aria-atomic="true">
+          <button class="back-to-choice" type="button" hidden>← 返回作品选择</button>
           <p class="detail-meta"><span data-field="index"></span><span data-field="date"></span></p>
           <h1 id="detail-title" data-field="title"></h1>
           <p class="detail-category" data-field="category"></p>
@@ -376,7 +385,8 @@ globalThis.bootWatchdog = setTimeout(() => {
   <script>
 // 只使用已提供信息；未提供的日期、素材和项目入口留待补充。
 const projects = {
-  reviews: { index: '01', title: '用户评论分析', category: '用户研究 · 内容分析', date: '案例待补充', description: '这里将展示用户评论分析案例，呈现从评论中整理用户反馈与问题的过程。', pending: '待补充：可公开的评论样例、分析过程与结果。', x: .396, y: .44, color: '#44694f' },
+  reviews: { index: '01', title: '用户评论分析', category: 'Agent 设计 · 用户研究', date: '400 条评论 · 两类场景', description: '让 AI 按编码手册分析评论，由程序核对原文和数字，把分歧交给人，再形成有依据的洞察与行动建议。', pending: '查看 Skill 的运作流程、分类规则与一致性检验，阅读现有报告，并了解知识库和企业部署的后续方向。', href: 'reviews.html', cta: '查看用户评论分析案例 ↗', x: .396, y: .44, color: '#44694f' },
+  novel: { index: '02 / A', title: '小说协作团队', category: 'Agent 设计 · 创作协作', date: '五位写作角色 · 一次协作演示', description: '把一个故事想法变成可修改的章节：五位角色围绕同一任务分工，读取共享文档，完成试写、审读与问题转交，作者掌握最终决定。', pending: '查看 Agent 如何推进任务，以及《镇馆之宝是假的》协作演示与后续优化方向。', href: 'novel.html', cta: '查看小说协作团队 ↗', showPreview: false, x: .405, y: .505, color: '#795d2e' },
   game: { index: '02', title: '借影 · 屋檐之间', category: '横版跳跃 · 交互设计', date: '玩法试玩', description: '操控火柴人跃过屋檐，在半空留下伸手相助的影子，借它重新起跳、抵达高处。', pending: '12 盏开门、18 盏全收集。借影取灯，避开风刃，回灯亭保存；支持键盘、触屏与音效开关。', href: 'shadow.html', cta: '试玩《借影》 ↗', x: .405, y: .505, color: '#795d2e' },
   heart: { index: '03', title: '轻度心理学习与练习skills', category: 'AI 应用 · 内容设计', date: '案例展示', description: '给 AI 一个课程主题，让它按写作说明书起草三天的讲解、练习题和答题反馈。', pending: '这份说明书就是 skill。案例展示了它的写法、课程样例，以及写完后的检查方式。', href: 'psych.html', cta: '查看心理健康案例 ↗', x: .625, y: .428, color: '#975b45' },
   growth: { index: '04', title: '门店数据报表工具', category: 'AI 应用 · 数据工具', date: '报表分析体验', description: '用内置模拟数据体验本地报表工具：查看金额趋势、平台占比与门店排名，再下载 Excel。', pending: '当前仅展示示例数据，不开放外部导入。后续拓展：结合经营资料，探索有数据依据的 AI 辅助分析。', href: 'report.html', x: .619, y: .499, color: '#795d2e' },
@@ -862,6 +872,9 @@ Check that all your Remotion packages are on the same version. If your dependenc
   const rig = document.querySelector('.portrait-rig');
   const panel = document.querySelector('.project-detail');
   const close = document.querySelector('.close-detail');
+  const choice = document.querySelector('.game-choice');
+  const detailCopy = document.querySelector('.detail-copy');
+  const backToChoice = document.querySelector('.back-to-choice');
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const mobile = matchMedia('(max-width: 760px)');
   const fine = matchMedia('(hover: hover) and (pointer: fine)');
@@ -884,6 +897,10 @@ Check that all your Remotion packages are on the same version. If your dependenc
     if (!p) return;
     if (!selected) trigger = source;
     selected = key;
+    choice.hidden = true;
+    detailCopy.hidden = false;
+    backToChoice.hidden = key !== 'novel' && key !== 'game';
+    panel.setAttribute('aria-labelledby', 'detail-title');
     for (const field of ['index', 'title', 'category', 'date', 'description', 'pending']) panel.querySelector(`[data-field="${field}"]`).textContent = p[field];
     const experience = panel.querySelector('.experience-link');
     experience.hidden = !p.href;
@@ -893,10 +910,27 @@ Check that all your Remotion packages are on the same version. If your dependenc
     panel.hidden = false;
     page.classList.add('is-detail');
     globalThis.HomeEffects?.setDetail(true);
-    document.querySelectorAll('[data-project]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.project === key)));
+    document.querySelectorAll('[data-project]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.project === (key === 'novel' ? 'game' : key))));
     updateZoom();
-    globalThis.HomeShowcase?.select(key, source);
+    if (p.showPreview === false) globalThis.HomeShowcase?.close();
+    else globalThis.HomeShowcase?.select(key, source);
     close.focus({ preventScroll: true });
+    if (mobile.matches) panel.scrollIntoView({ behavior: reduced.matches ? 'instant' : 'smooth', block: 'nearest' });
+  }
+  function showGameChoice(source) {
+    if (!selected) trigger = source;
+    selected = 'game';
+    globalThis.HomeShowcase?.close();
+    detailCopy.hidden = true;
+    choice.hidden = false;
+    panel.setAttribute('aria-labelledby', 'choice-title');
+    page.style.setProperty('--project-accent', projects.game.color);
+    panel.hidden = false;
+    page.classList.add('is-detail');
+    globalThis.HomeEffects?.setDetail(true);
+    document.querySelectorAll('[data-project]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.project === 'game')));
+    updateZoom();
+    document.querySelector('#choice-title').focus({ preventScroll: true });
     if (mobile.matches) panel.scrollIntoView({ behavior: reduced.matches ? 'instant' : 'smooth', block: 'nearest' });
   }
   function goHome(event) {
@@ -913,7 +947,13 @@ Check that all your Remotion packages are on the same version. If your dependenc
     trigger = null;
     scrollTo({ top: 0, behavior: reduced.matches ? 'instant' : 'smooth' });
   }
-  document.querySelectorAll('[data-project]').forEach(button => button.addEventListener('click', () => selectProject(button.dataset.project, button)));
+  document.querySelectorAll('[data-project]').forEach(button => button.addEventListener('click', () => {
+    trigger = button;
+    if (button.dataset.project === 'game') showGameChoice(button);
+    else selectProject(button.dataset.project, button);
+  }));
+  document.querySelectorAll('[data-game-choice]').forEach(button => button.addEventListener('click', () => selectProject(button.dataset.gameChoice, trigger)));
+  backToChoice.addEventListener('click', () => showGameChoice(trigger));
   close.addEventListener('click', goHome);
   document.querySelectorAll('[data-home]').forEach(link => link.addEventListener('click', goHome));
   document.addEventListener('keydown', event => { if (event.key === 'Escape') goHome(event); });
