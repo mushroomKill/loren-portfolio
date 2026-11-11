@@ -17,12 +17,12 @@
 <main id="case">
   <header class="intro">
     <div><h1>用户反馈分析 Agent</h1><p class="subtitle">从用户评论中整理问题，形成有依据、可复核的洞察与行动建议。</p><p class="project-meta">400 条公开评论 · 外卖与 App 两类场景 · Claude 内运行的 MVP</p></div>
-    <div class="definition"><strong>这个 Skill 是什么？</strong><p>一份可复用的分析说明书：规定如何分类、怎么核对证据、什么时候交给人，以及如何从反馈走向行动。当前在 Claude 中由子 Agent、程序脚本与人工复核共同执行；本页展示已完成的案例。</p></div>
+    <div class="definition"><strong>这个 Agent 工作流是什么？</strong><p>一套可复用的评论分析流程：规定如何分类、怎么核对证据、什么时候交给人，以及如何从反馈走向行动。当前在 Claude 中由子 Agent、程序脚本与人工复核共同执行，规则写在一份 Skill（分析说明书）里；本页展示已完成的案例。</p></div>
   </header>
-  <nav class="contents" aria-label="项目目录"><a href="#workflow">Skill 运作流程</a><a href="#reports">目前做出的报告</a><a href="#future">以后优化的方向</a></nav>
+  <nav class="contents" aria-label="项目目录"><a href="#workflow">工作流怎么运作</a><a href="#reports">目前做出的报告</a><a href="#future">以后优化的方向</a></nav>
 
   <section class="section" id="workflow" aria-labelledby="workflow-title">
-    <div class="section-heading"><h2 id="workflow-title">Skill 怎么运作？</h2><p>AI 理解文本，程序检查证据，人把关关键判断。</p></div>
+    <div class="section-heading"><h2 id="workflow-title">Agent 工作流怎么运作？</h2><p>AI 理解文本，程序检查证据，人把关关键判断。</p></div>
     <ol class="steps">
       <li><span class="step-number" aria-hidden="true">1</span><div class="step-body"><div class="step-heading"><h3>导入评论，明确分析目标</h3><span class="who">人 + 程序</span></div><p>人提供评论与业务背景，说明想解决什么问题；保留评论编号、原文，以及可获得的来源、时间、星级信息。</p><div class="boundary">评论能说明用户表达了什么；样本的来源与筛选方式，决定结论可以解释到哪里。</div></div></li>
       <li><span class="step-number" aria-hidden="true">2</span><div class="step-body"><div class="step-heading"><h3>先建立分类规则，再批量标注</h3><span class="who">AI 起草 · 人确认</span></div><p>从样本中归纳评价方面，写成编码手册。每类明确“包括什么、不包括什么”、正负例子和严重程度，不把行业分类写死。</p>
@@ -80,7 +80,7 @@
       <article><h3>持续验证分析质量</h3><p>完成剩余复核，建立独立人工参考集，检验规则修订是否有效，并记录人工耗时和分析成本。</p></article>
       <article><h3>接入商品、门店与业务知识</h3><p>将评论关联到具体商品、门店和业务规则；配合经过审核的资料库，让建议更具体、更有依据。</p></article>
       <article><h3>支持评论图片</h3><p>补充文字未表达的信息，记录图片编号、可见证据与不确定性，高严重度问题仍转人工核实。</p></article>
-      <article><h3>探索企业内部部署</h3><p>将流程迁移到内部工作台，通过后端调用不同模型 API 独立分析，统一保存版本、复核与行动记录。</p><details><summary>当前原型与企业版有什么不同？</summary><div class="detail-body"><p>当前在 Claude 对话环境中按 Skill 执行。企业版可由后端管理任务、模型调用、失败恢复和人工暂停点；员工通过工作台确认规则与裁决分歧。</p><p>多个模型仍可能共同犯错，需要保留程序校验、人工抽检与质量评估。是否采用全量双模型分析，要比较质量收益、费用与等待时间。</p><p>这部分是部署设想；当前作品集只展示已有案例，不连接模型 API。</p></div></details></article>
+      <article><h3>探索企业内部部署</h3><p>将流程迁移到内部工作台，通过后端调用不同模型 API 独立分析，统一保存版本、复核与行动记录。</p><details><summary>当前原型与企业版有什么不同？</summary><div class="detail-body"><p>当前在 Claude 对话环境中运行，规则来自 Skill。企业版可由后端管理任务、模型调用、失败恢复和人工暂停点；员工通过工作台确认规则与裁决分歧。</p><p>多个模型仍可能共同犯错，需要保留程序校验、人工抽检与质量评估。是否采用全量双模型分析，要比较质量收益、费用与等待时间。</p><p>这部分是部署设想；当前作品集只展示已有案例，不连接模型 API。</p></div></details></article>
     </div>
   </section>
   <footer><a href="index.html#return">← 返回作品集首页</a></footer>
