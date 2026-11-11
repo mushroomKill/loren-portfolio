@@ -407,8 +407,8 @@ const projects = {
   market: { index: '02 / B', title: '情绪市场', category: '可玩原型 · 数值模拟验证', date: '网页试玩', description: '养成收集类小游戏原型，用 30 天经济模拟（每种上线习惯各 4000 次）验证金币与收集节奏，并据结果调整数值。', pending: '游戏在单独的页面运行，会在新标签页打开。', href: 'https://mushroomkill.github.io/emotion-market/', external: true, cta: '试玩《情绪市场》 ↗', showPreview: false, group: 'game', x: .405, y: .505, color: '#795d2e' },
   heart: { index: '03', title: '轻度心理学习与练习skills', category: 'AI 应用 · 内容设计', date: '案例展示', description: '给 AI 一个课程主题，让它按写作说明书起草三天的讲解、练习题和答题反馈。', pending: '这份说明书就是 skill。案例展示了它的写法、课程样例，以及写完后的检查方式。', href: 'psych.html', cta: '查看心理健康案例 ↗', x: .625, y: .428, color: '#975b45' },
   growth: { index: '04', title: '门店经营看板', category: '数据分析 · 问题定位 · 提效工具', date: '报表分析体验', description: '用内置模拟数据体验本地报表工具：查看金额趋势、平台占比与门店排名，按多项指标给门店分级，并列出下滑和值得关注的门店，再下载 Excel。', pending: '分级与异常规则来自一个实际使用的本地运营工作台，网页版用模拟数据演示，不开放外部导入。后续拓展：结合经营资料，探索有数据依据的 AI 辅助分析。', href: 'report.html', cta: '体验门店经营看板 ↗', x: .619, y: .499, color: '#795d2e' },
-  // 试听片段为加扰后的 .bin（见下方 AudioVault），notes 填创作说明，每条一句。
-  music: { index: '05', title: 'AI 音频', category: 'AI 音乐 · 歌曲创作', date: 'Suno · 3 段节选', description: '用 Suno 创作的歌曲，这里放三段节选试听。', pending: '创作说明整理中。', tracks: [{ label: 'Demo 1', file: 'assets/media/m1.bin', duration: 29.8 }, { label: 'Demo 2', file: 'assets/media/m2.bin', duration: 31.8 }, { label: 'Demo 3', file: 'assets/media/m3.bin', duration: 78 }], audioLabel: '均为节选片段，仅供在线试听。', notes: [], showPreview: false, x: .461, y: .571, color: '#44696b' },
+  // 试听片段为加扰后的 .bin（见下方 AudioVault）。不写创作说明：pending 留空、notes 为空时这两处都不显示。
+  music: { index: '05', title: 'AI 音频', category: 'AI 音乐 · 歌曲创作', date: 'Suno · 3 段节选', description: '用 Suno 创作的歌曲，这里放三段节选试听。', pending: '', tracks: [{ label: 'Demo 1', file: 'assets/media/m1.bin', duration: 29.8 }, { label: 'Demo 2', file: 'assets/media/m2.bin', duration: 31.8 }, { label: 'Demo 3', file: 'assets/media/m3.bin', duration: 78 }], audioLabel: '均为节选片段，仅供在线试听。', notes: [], showPreview: false, x: .461, y: .571, color: '#44696b' },
 };
 
 // Audio is stored scrambled and played from memory through Web Audio: no media URL, download button or "save audio as".
