@@ -112,7 +112,6 @@ button:focus-visible { outline: 2px solid #806333; outline-offset: 5px; }
 .game { left: 40.5%; top: 50.5%; transform: translate(-50%, -50%) rotate(14deg); }
 .heart { left: 62.5%; top: 42.8%; width: 5.6%; height: 5.8%; transform: translate(-50%, -50%) rotate(16deg); }
 .growth { left: 61.9%; top: 49.9%; width: 5.7%; height: 7.5%; transform: translate(-50%, -50%) rotate(8deg); }
-.music { left: 46.1%; top: 57.1%; width: 5.4%; height: 6.2%; transform: translate(-50%, -50%) rotate(-6deg); }
 .hero-copy { top: auto; bottom: 104px; width: 92%; z-index: 7; }
 .interaction-hint { font-size: 12px; font-weight: 400; letter-spacing: .15em; color: #5c6355; margin: 0 0 20px; }
 .project-nav { display: flex; justify-content: center; gap: 28px; }
@@ -254,8 +253,6 @@ html.is-booting { overflow: hidden; }
 .site-header{background:none;transition:border-color 700ms}
 .site-header::before{content:'';position:absolute;z-index:-1;top:0;bottom:0;left:calc(50% - 50vw);right:calc(50% - 50vw);pointer-events:none;background:linear-gradient(var(--page-bg) 30%,#f4efe5c7 62%,#f4efe500)}
 .is-detail .site-header{border-bottom-color:transparent}
-/* AI audio card: custom track list played through Web Audio, so the page exposes no saveable media element. */
-.audio-card{margin:22px 0 20px;padding:6px 16px 12px;border:1px solid #aeb49d65;border-radius:10px;background:#eeeadf;-webkit-user-select:none;user-select:none}.track-list{list-style:none;margin:0;padding:0}.track{display:grid;grid-template-columns:40px minmax(0,1fr) auto;align-items:center;gap:4px 12px;padding:12px 0}.track+.track{border-top:1px solid #aeb49d55}.track-play{grid-row:1 / 3;width:40px;height:40px;border-radius:50%;border:1px solid var(--project-accent);background:transparent;color:var(--project-accent);cursor:pointer;display:grid;place-items:center;padding:0}.track-play:hover,.track-play[aria-pressed="true"]{background:var(--project-accent);color:#f4efe5}.track-play:disabled{opacity:.5;cursor:progress}.track-play svg{width:14px;height:14px;fill:currentColor}.track-name{font-size:13px;color:#383b33;letter-spacing:.04em}.track-time{font-size:11px;color:#5e6853;font-variant-numeric:tabular-nums;justify-self:end}.track-seek{grid-column:2 / 4;width:100%;height:20px;margin:0;accent-color:var(--project-accent);cursor:pointer}.track-seek:disabled{cursor:default;opacity:.55}.audio-caption{margin:8px 0 0;font-size:10px;line-height:1.6;color:#5e6853}.audio-notes{margin:0 0 22px;padding:0;list-style:none;font-size:13px;line-height:1.9;color:#454e3e}.audio-notes li{position:relative;padding-left:16px}.audio-notes li::before{content:'';position:absolute;left:0;top:.8em;width:6px;height:1px;background:var(--project-accent)}
 
 </style>
   <link rel="preload" as="image" href="assets/reviews-sticker.webp" fetchpriority="high">
@@ -318,18 +315,13 @@ globalThis.bootWatchdog = setTimeout(() => {
       <div class="portrait-scene">
         <div class="portrait-float">
         <div class="portrait-rig">
-          <img class="portrait" src="assets/loren-portrait-transparent.webp" width="1254" height="1254" fetchpriority="high" alt="黑发金色发尾的人物形象，脸颊上有对话气泡、手柄、音符、爱心和上升图表五张贴纸。">
+          <img class="portrait" src="assets/loren-portrait-transparent.webp" width="1254" height="1254" fetchpriority="high" alt="黑发金色发尾的人物形象，脸颊上有对话气泡、手柄、爱心和上升图表四张贴纸。">
           <svg class="sticker-art" viewBox="0 0 1254 1254" aria-hidden="true">
             <defs>
               <filter id="review-edge" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="1.5"/></filter>
               <mask id="review-blend" maskUnits="userSpaceOnUse" x="440" y="505" width="116" height="91"><rect x="444" y="509" width="108" height="83" fill="white" filter="url(#review-edge)"/></mask>
-              <!-- The music note already exists in the portrait under the review sticker; it is reused here, moved to the lower cheek. -->
-              <filter id="note-edge" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="2"/></filter>
-              <mask id="note-blend" maskUnits="userSpaceOnUse" x="446" y="508" width="80" height="84"><rect x="451" y="512" width="70" height="76" rx="14" fill="white" filter="url(#note-edge)"/></mask>
-              <clipPath id="note-crop"><rect x="440" y="500" width="95" height="100"/></clipPath>
             </defs>
             <image href="assets/reviews-sticker.webp" x="440" y="505" width="116" height="91" mask="url(#review-blend)"/>
-            <g transform="translate(578 716) rotate(-6) scale(.9) translate(-486 -550)"><g mask="url(#note-blend)"><image href="assets/loren-portrait-transparent.webp" width="1254" height="1254" clip-path="url(#note-crop)"/></g></g>
           </svg>
           <svg class="eye-layer" viewBox="0 0 1254 1254" aria-hidden="true">
             <defs>
@@ -347,7 +339,6 @@ globalThis.bootWatchdog = setTimeout(() => {
           <div class="sticker-hotspots" aria-label="脸部贴纸入口">
             <button class="sticker reviews" data-project="reviews" aria-label="对话气泡贴纸：用户评论分析" aria-controls="project-detail" aria-pressed="false"></button>
             <button class="sticker game" data-project="game" aria-label="手柄贴纸：可玩原型" aria-controls="project-detail" aria-pressed="false"></button>
-            <button class="sticker music" data-project="music" aria-label="音符贴纸：AI 音频" aria-controls="project-detail" aria-pressed="false"></button>
             <button class="sticker heart" data-project="heart" aria-label="爱心贴纸：AI 心理健康内容设计" aria-controls="project-detail" aria-pressed="false"></button>
             <button class="sticker growth" data-project="growth" aria-label="图表贴纸：门店经营看板" aria-controls="project-detail" aria-pressed="false"></button>
           </div>
@@ -363,7 +354,6 @@ globalThis.bootWatchdog = setTimeout(() => {
           <button data-project="game" aria-controls="project-detail" aria-pressed="false">可玩原型</button>
           <button data-project="heart" aria-controls="project-detail" aria-pressed="false">AI 内容</button>
           <button data-project="growth" aria-controls="project-detail" aria-pressed="false">门店经营看板</button>
-          <button data-project="music" aria-controls="project-detail" aria-pressed="false">AI 音频</button>
         </div>
       </div>
       <section class="project-detail" id="project-detail" aria-labelledby="detail-title" hidden>
@@ -385,12 +375,7 @@ globalThis.bootWatchdog = setTimeout(() => {
             <div class="motion-preview-player" aria-hidden="true" inert></div>
             <div class="preview-toolbar"><span class="preview-label-text">项目预告</span><button class="preview-toggle" type="button" aria-pressed="true">暂停预告</button></div>
           </div>
-          <div class="audio-card" hidden>
-            <ol class="track-list" aria-label="试听片段"></ol>
-            <p class="audio-caption"></p>
-          </div>
           <p class="detail-pending" data-field="pending"></p>
-          <ul class="audio-notes" hidden></ul>
           <a class="experience-link" href="report.html" hidden>体验门店经营看板 <span aria-hidden="true">↗</span></a>
           <span class="experience-pending">完整内容待补充 <span aria-hidden="true">↗</span></span>
         </div>
@@ -411,59 +396,7 @@ const projects = {
   market: { index: '02 / B', title: '情绪市场', category: '可玩原型 · 数值模拟验证', date: '网页试玩', description: '养成收集类小游戏原型，用 30 天经济模拟（每种上线习惯各 4000 次）验证金币与收集节奏，并据结果调整数值。', pending: '游戏在单独的页面运行，会在新标签页打开。', href: 'https://mushroomkill.github.io/emotion-market/', external: true, cta: '试玩《情绪市场》 ↗', showPreview: false, group: 'game', x: .405, y: .505, color: '#795d2e' },
   heart: { index: '03', title: '轻度心理学习与练习skills', category: 'AI 应用 · 内容设计', date: '案例展示', description: '给 AI 一个课程主题，让它按写作说明书起草三天的讲解、练习题和答题反馈。', pending: '这份说明书就是 skill。案例展示了它的写法、课程样例，以及写完后的检查方式。', href: 'psych.html', cta: '查看心理健康案例 ↗', x: .625, y: .428, color: '#975b45' },
   growth: { index: '04', title: '门店经营看板', category: '数据分析 · 问题定位 · 提效工具', date: '报表分析体验', description: '用内置模拟数据体验本地报表工具：查看金额趋势、平台占比与门店排名，按多项指标给门店分级，并列出下滑和值得关注的门店，再下载 Excel。', pending: '分级与异常规则来自一个实际使用的本地运营工作台，网页版用模拟数据演示，不开放外部导入。后续拓展：结合经营资料，探索有数据依据的 AI 辅助分析。', href: 'report.html', cta: '体验门店经营看板 ↗', x: .619, y: .499, color: '#795d2e' },
-  // 试听片段为加扰后的 .bin（见下方 AudioVault）。不写创作说明：pending 留空、notes 为空时这两处都不显示。
-  music: { index: '05', title: 'AI 音频', category: 'AI 音乐 · 歌曲创作', date: 'Suno · 3 段节选', description: '用 Suno 创作的歌曲，这里放三段节选试听。', pending: '', tracks: [{ label: 'Demo 1', file: 'assets/media/m1.bin', duration: 29.8 }, { label: 'Demo 2', file: 'assets/media/m2.bin', duration: 31.8 }, { label: 'Demo 3', file: 'assets/media/m3.bin', duration: 78 }], audioLabel: '均为节选片段，仅供在线试听。', notes: [], showPreview: false, x: .461, y: .571, color: '#44696b' },
 };
-
-// Audio is stored scrambled and played from memory through Web Audio: no media URL, download button or "save audio as".
-// This only deters casual saving; anything a browser can play can still be recorded.
-const AudioVault = (() => {
-  const KEY = new TextEncoder().encode('loren-portfolio/audio-v1');
-  const cache = new Map();
-  let ctx = null, now = null, frame = 0;
-  const listeners = new Set();
-  const emit = () => listeners.forEach(fn => fn(now));
-  const position = () => !now ? 0 : now.source ? Math.min(now.duration, ctx.currentTime - now.startedAt) : now.offset;
-  function load(file) {
-    if (!cache.has(file)) {
-      const job = fetch(file).then(r => { if (!r.ok) throw Error(r.status); return r.arrayBuffer(); }).then(buffer => {
-        const bytes = new Uint8Array(buffer);
-        for (let i = 0; i < bytes.length; i++) bytes[i] ^= KEY[(i * 7 + 3) % KEY.length] ^ (i & 255);
-        return ctx.decodeAudioData(bytes.buffer);
-      });
-      cache.set(file, job); job.catch(() => cache.delete(file));
-    }
-    return cache.get(file);
-  }
-  function tick() { frame = 0; if (now?.source) { emit(); frame = requestAnimationFrame(tick); } }
-  function halt() { if (now?.source) { now.offset = position(); now.source.onended = null; now.source.stop(); now.source = null; } cancelAnimationFrame(frame); frame = 0; }
-  function startAt(offset) {
-    const source = ctx.createBufferSource(); source.buffer = now.buffer; source.connect(ctx.destination);
-    source.onended = () => { if (now?.source === source) { now.source = null; now.offset = 0; emit(); } };
-    now.source = source; now.startedAt = ctx.currentTime - offset; source.start(0, offset); tick();
-  }
-  return {
-    subscribe(fn) { listeners.add(fn); return () => listeners.delete(fn); },
-    state: () => now && { file: now.file, playing: Boolean(now.source), time: position(), duration: now.duration, loading: now.loading },
-    async toggle(file) {
-      ctx ||= new (window.AudioContext || window.webkitAudioContext)();
-      if (ctx.state === 'suspended') await ctx.resume();
-      if (now?.file === file && now.source) { halt(); emit(); return; }
-      if (now?.file === file && now.loading) return;
-      if (now?.file !== file) { halt(); now = { file, offset: 0, loading: true, duration: 0 }; emit(); }
-      const target = now;
-      try { target.buffer = await load(file); } catch (error) { if (now === target) { now = null; emit(); } throw error; }
-      if (now !== target) return;
-      target.loading = false; target.duration = target.buffer.duration;
-      startAt(target.offset >= target.duration ? 0 : target.offset); emit();
-    },
-    seek(file, seconds) {
-      if (now?.file !== file || !now.buffer) return;
-      const playing = Boolean(now.source); halt(); now.offset = Math.max(0, Math.min(seconds, now.duration)); if (playing) startAt(now.offset); emit();
-    },
-    stop() { halt(); if (now) { now.offset = 0; now = null; } emit(); },
-  };
-})();
 
 </script>
   <script>
@@ -965,43 +898,6 @@ Check that all your Remotion packages are on the same version. If your dependenc
     rig.style.transform = `translate(${z.dx}px, ${z.dy}px) scale(${z.scale})`;
     wakeEyes();
   }
-  const icons = { play: '<svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 1.5v11l9.5-5.5z"/></svg>', pause: '<svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2.5 1.5h3.2v11H2.5zm5.8 0h3.2v11H8.3z"/></svg>' };
-  const clock = s => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
-  let trackRows = [];
-  function renderTracks(tracks) {
-    const list = panel.querySelector('.track-list');
-    trackRows = tracks.map(track => {
-      const li = document.createElement('li'); li.className = 'track';
-      const play = document.createElement('button'); play.type = 'button'; play.className = 'track-play';
-      const name = Object.assign(document.createElement('span'), { className: 'track-name', textContent: track.label });
-      const time = Object.assign(document.createElement('span'), { className: 'track-time' });
-      const seek = Object.assign(document.createElement('input'), { type: 'range', className: 'track-seek', min: 0, max: track.duration, step: .1, value: 0, disabled: true });
-      seek.setAttribute('aria-label', `${track.label} 播放进度`);
-      play.addEventListener('click', () => AudioVault.toggle(track.file).catch(() => { time.textContent = '暂时无法播放'; }));
-      seek.addEventListener('input', () => AudioVault.seek(track.file, Number(seek.value)));
-      li.append(play, name, time, seek);
-      return { track, li, play, time, seek };
-    });
-    list.replaceChildren(...trackRows.map(row => row.li));
-    syncTracks();
-  }
-  function syncTracks() {
-    const s = AudioVault.state();
-    for (const { track, play, time, seek } of trackRows) {
-      const mine = s?.file === track.file, playing = mine && s.playing, loading = mine && s.loading;
-      play.innerHTML = playing ? icons.pause : icons.play;
-      play.setAttribute('aria-pressed', String(playing));
-      play.setAttribute('aria-label', `${playing ? '暂停' : '播放'} ${track.label}`);
-      play.disabled = loading;
-      const duration = mine && s.duration ? s.duration : track.duration, now = mine ? s.time : 0;
-      if (!time.textContent.startsWith('暂时') || mine) time.textContent = loading ? '载入中…' : `${clock(now)} / ${clock(duration)}`;
-      seek.max = duration; if (document.activeElement !== seek) seek.value = now;
-      seek.disabled = !mine || loading;
-    }
-  }
-  AudioVault.subscribe(syncTracks);
-  panel.querySelector('.audio-card').addEventListener('contextmenu', event => event.preventDefault());
-  document.addEventListener('visibilitychange', () => { if (document.hidden && AudioVault.state()?.playing) AudioVault.toggle(AudioVault.state().file); });
   function selectProject(key, source) {
     const p = projects[key];
     if (!p) return;
@@ -1018,14 +914,8 @@ Check that all your Remotion packages are on the same version. If your dependenc
       experience.href = p.href; experience.textContent = p.cta || '查看作品 ↗';
       if (p.external) { experience.target = '_blank'; experience.rel = 'noopener'; } else { experience.removeAttribute('target'); experience.removeAttribute('rel'); }
     }
-    const audioCard = panel.querySelector('.audio-card'), notes = panel.querySelector('.audio-notes');
-    AudioVault.stop();
-    audioCard.hidden = !p.tracks;
-    if (p.tracks) { renderTracks(p.tracks); panel.querySelector('.audio-caption').textContent = p.audioLabel || ''; }
-    notes.replaceChildren(...(p.notes || []).map(text => Object.assign(document.createElement('li'), { textContent: text })));
-    notes.hidden = !(p.notes || []).length;
     panel.querySelector('[data-field="pending"]').hidden = !p.pending;
-    panel.querySelector('.experience-pending').hidden = Boolean(p.href || p.tracks);
+    panel.querySelector('.experience-pending').hidden = Boolean(p.href);
     page.style.setProperty('--project-accent', p.color);
     panel.hidden = false;
     page.classList.add('is-detail');
@@ -1041,7 +931,6 @@ Check that all your Remotion packages are on the same version. If your dependenc
     if (!selected) trigger = source;
     selected = 'game';
     globalThis.HomeShowcase?.close();
-    AudioVault.stop();
     detailCopy.hidden = true;
     choice.hidden = false;
     panel.setAttribute('aria-labelledby', 'choice-title');
@@ -1059,7 +948,6 @@ Check that all your Remotion packages are on the same version. If your dependenc
     if (!selected) return;
     selected = null;
     globalThis.HomeShowcase?.close();
-    AudioVault.stop();
     page.classList.remove('is-detail');
     globalThis.HomeEffects?.setDetail(false);
     panel.hidden = true;
